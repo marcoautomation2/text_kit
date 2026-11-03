@@ -5,8 +5,10 @@ The demo is listed in the storefront https://marcoservetto.github.io/fearless_de
 
 ## Use
 
-Download `text_kit_lib.zip` from https://marcoautomation2.github.io/text_kit/.
-Copy the zip into a Fearless project, zipped or unzipped.
+The URL of the zip is https://marcoautomation2.github.io/text_kit/text_kit_lib.zip.
+The page https://marcoautomation2.github.io/text_kit/ has a button that copies the URL.
+Import the URL into a Fearless project with the Fearless manager.
+The zip also works by hand: copy the zip, zipped or unzipped, into the project.
 Write `use text_kit.Pads as Pads;` in the rank file of the package that needs `Pads`.
 The package that uses the library needs a rank higher than `core200`.
 Every package of rank `app` qualifies.

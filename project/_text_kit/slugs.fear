@@ -1,0 +1,7 @@
+///Slugs are texts that are safe in a file name or in a web address.
+Slugs: {
+  ///The lower case words of `text` joined by dashes.
+  //> .check{Slugs.of("Hello Big World") .assertEq "hello-big-world"}
+  //> .check{Slugs.of("  Many   spaces ") .assertEq "many-spaces"}
+  .of(text: Str): Str -> Words.of(text.lower).flow.join("-");
+  }

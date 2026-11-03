@@ -1,0 +1,22 @@
+///Padding: makes a text exactly as wide as asked.
+///A text that is already wide enough is returned as it is.
+Pads: {
+  ///The text `text` with copies of `fill` added on its left until `text` has `width` characters.
+  //> .check{Pads.left("7", 3, "0") .assertEq "007"}
+  //> .check{Pads.left("12345", 3, "0") .assertEq "12345"}
+  .left(text: Str, width: Nat, fill: Str): Str -> Block#
+    .if{text.size >= width} .return{text}
+    .return{this.left(fill + text, width, fill)};
+  ///The text `text` with copies of `fill` added on its right until `text` has `width` characters.
+  //> .check{Pads.right("ab", 5, ".") .assertEq "ab..."}
+  .right(text: Str, width: Nat, fill: Str): Str -> Block#
+    .if{text.size >= width} .return{text}
+    .return{this.right(text + fill, width, fill)};
+  ///The text `text` centred in `width` characters, padded with `fill`; the odd padding goes on the right.
+  //> .check{Pads.center("ab", 5, "*") .assertEq "*ab**"}
+  .center(text: Str, width: Nat, fill: Str): Str -> Block#
+    .if{text.size >= width} .return{text}
+    .let missing= {width - (text.size)}
+    .let before= {missing.getTruncDiv 2}
+    .return{this.right(this.left(text, text.size + before, fill), width, fill)};
+  }

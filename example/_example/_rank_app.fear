@@ -1,0 +1,18 @@
+use base.Main as Main;
+use base.Void as Void;
+use base.Debug as Debug;
+use base.Block as Block;
+use text_kit.Pads as Pads;
+use text_kit.Words as Words;
+use text_kit.Slugs as Slugs;
+use text_kit.Truncs as Truncs;
+
+TextKitExample:Main{sys-> Block#
+  .do{Debug#(Pads.left("7", 3, "0"))}
+  .do{Debug#(Pads.center("title", 11, "*"))}
+  .do{Debug#(Words.count("the quick brown fox"))}
+  .do{Debug#(Words.title("the quick brown fox"))}
+  .do{Debug#(Slugs.of("The Quick Brown Fox"))}
+  .do{Debug#(Truncs.to("The quick brown fox jumps over the lazy dog", 20))}
+  .return{Void}
+  }

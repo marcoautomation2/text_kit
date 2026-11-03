@@ -1,0 +1,14 @@
+///Words are the pieces of a text between spaces.
+Words: {
+  ///The words of `text`, in order; several spaces in a row count as one separator.
+  //> .check{Words.of("  big   red  fox ") .assertEq({::}, Lists#("big", "red", "fox"))}
+  //> .check{Words.of("").isEmpty .assertTrue}
+  .of(text: Str): List[Str] -> text.split(" ").flow.filter{w -> w.isEmpty.not}.list;
+  ///How many words `text` has.
+  //> .check{Words.count("one two  three") .assertEq 3}
+  //> .check{Words.count("   ") .assertEq 0}
+  .count(text: Str): Nat -> this.of(text).size;
+  ///The text `text` with the first letter of every word in upper case and every other letter in lower case.
+  //> .check{Words.title("hELLO big wORLD") .assertEq "Hello Big World"}
+  .title(text: Str): Str -> this.of(text).flow.map{w -> w.sub(0, 1).upper + (w.sub(1, w.size).lower)}.list.flow.join(" ");
+  }

@@ -1,0 +1,10 @@
+///Truncation: shortens a text that is too long.
+Truncs: {
+  ///The text `text` when it has at most `max` characters, otherwise its first characters followed by three dots, with `max` characters in total.
+  //> .check{Truncs.to("short", 10) .assertEq "short"}
+  //> .check{Truncs.to("a much longer text", 10) .assertEq "a much ..."}
+  //> .check{Truncs.to("abcdef", 3) .assertEq "..."}
+  .to(text: Str, max: Nat): Str -> Block#
+    .if{text.size <= max} .return{text}
+    .return{text.sub(0, max - 3) + "..."};
+  }
